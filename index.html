@@ -14,9 +14,9 @@
         <!-- Start game / Enter Winning Score -->
         <div class="start-game-screen">
             <h1>Rock - Paper - Scissors</h1>
-            <img src="resources/rock-paper-scissors.png" alt="">
+            <img src="resources/rock-paper-scissors.png" alt="Rock Paper Scissors Image">
             <h2>Enter winning score to start the game</h2>
-            <input class="center" type="number" name="" id="winning-score-input">
+            <input class="center" type="number" name="" id="winning-score-input" min="1">
             <button id="start-btn">Lets Go!</button>
         </div>
 
@@ -25,11 +25,11 @@
             <div class="scoreboard">
                 <div class="center">
                     <h2>Player</h2>
-                    <h3 class="center mt-1-rem" id="player-score">0</h3>
+                    <h3 class="center mt-1-rem"><span id="player-score">0</span>/<span class="score-to-win">0</span></h3>
                 </div>
                 <div class="">
                     <h2>Computer</h2>
-                    <h3 class="center mt-1-rem" id="computer-score">0</h3>
+                    <h3 class="center mt-1-rem"><span id="computer-score">0</span>/<span class="score-to-win">0</span></h3>
                 </div>
             </div>
 
@@ -38,8 +38,8 @@
                 <!-- Initial hands -->
                 <h2 class="winner">Choose an option</h2>
                 <div class="hands">
-                    <img class="player-hand" src="resources/Rock.png" alt="">
-                    <img class="computer-hand" src="resources/Rock.png" alt="">
+                    <img class="player-hand" src="resources/Rock.png" alt="Rock Image">
+                    <img class="computer-hand" src="resources/Rock.png" alt="Rock Image">
                 </div>
 
                 <!-- Options to select from -->
@@ -47,6 +47,12 @@
                     <button class="rock">rock</button>
                     <button class="paper">paper</button>
                     <button class="scissors">scissors</button>
+                </div>
+                
+                <!-- Game Over -->
+                <div class="game-over">
+                    <button id="restart">Restart Game</button>
+                    <button id="reset-winning-score">Reset winning score</button>
                 </div>
             </div>
         </div>

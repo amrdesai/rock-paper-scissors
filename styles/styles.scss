@@ -5,6 +5,24 @@
     box-sizing: border-box;
 }
 
+// Mixins
+@mixin button-layout {
+    button {
+        padding: .5rem;
+        margin: 0 15px;
+        font-size: 1.25rem;
+        width: 8rem;
+        background-color: rgb(144, 233, 206);
+        border-radius: 4px;
+        border-color: rgb(144, 233, 206);
+        cursor: pointer;
+        
+        &:hover {
+            border-color: #000;
+        } 
+    }
+}
+
 /* Section */
 section {
     height: 100vh;
@@ -16,7 +34,7 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;    
+        justify-content: space-around;  
         
         // Heading
         h1 {
@@ -36,19 +54,7 @@ section {
         }
 
         // Game start button
-        button {
-            padding: .5rem;
-            font-size: 1.25rem;
-            width: 8rem;
-            background-color: rgb(144, 233, 206);
-            border-radius: 4px;
-            border-color: rgb(144, 233, 206);
-            cursor: pointer;
-            
-            &:hover {
-                border-color: #000;
-            }
-        }
+        @include button-layout;
     }
 
     // Game Screen
@@ -79,6 +85,7 @@ section {
             justify-content: center;
             align-items: center;
             margin: 3rem 0;
+            
 
             // Game hands
             .hands {
@@ -86,6 +93,10 @@ section {
                 justify-content: space-around;
                 margin: 5rem 0;
                 width: 50%;
+
+                img {
+                    margin: 0 20px;
+                }
 
                 /* Flip image for computer hand */
                 .computer-hand {
@@ -96,28 +107,72 @@ section {
 
             // Options
             .options {
+                @include button-layout;
+            } 
+            
+            // Game over div
+            .game-over {
+                display: none;
 
+                @include button-layout;
                 button {
-                    padding: .5rem;
-                    margin: 0 15px;
-                    font-size: 1.25rem;
-                    width: 8rem;
-                    background-color: rgb(144, 233, 206);
-                    border-radius: 4px;
-                    border-color: rgb(144, 233, 206);
-                    cursor: pointer;
-                    
-                    &:hover {
-                        border-color: #000;
-                    } 
+                    width: 15rem;
+                    margin-top: 5rem;
                 }
-            }
-            
-            
+            }   
         }
     }
 
 }
+
+// Animations //
+// Shaking animation mixin
+@mixin shakeEffectMixin($animation-name, $rotateY: 0deg) {
+    @keyframes #{$animation-name} {
+        0% {
+            transform: rotateY($rotateY) translateY(0px);
+        }
+        
+        13% {
+            transform: rotateY($rotateY) translateY(-20px);
+        } 
+        
+        25% {
+            transform: rotateY($rotateY) translateY(0px);
+        }
+        
+        38% {
+            transform: rotateY($rotateY) translateY(-20px);
+        }
+        
+        50% {
+            transform: rotateY($rotateY) translateY(0px);
+        }
+        
+        62% {
+            transform: rotateY($rotateY) translateY(-20px);
+        }
+        
+        75% {
+            transform: rotateY($rotateY) translateY(0px);
+        }
+        
+        88% {
+            transform: rotateY($rotateY) translateY(-20px);
+        }   
+        
+        100% {
+            transform: rotateY($rotateY) translateY(0px);
+        }
+    }  
+}
+
+// player shake animation
+@include shakeEffectMixin('playerShakeEffect');
+
+// computer shake animation
+@include shakeEffectMixin('computerShakeEffect', -180deg);
+
 
 
 // Helper Classes
@@ -127,4 +182,75 @@ section {
 
 .mt-1-rem {
     margin-top: 1rem;
+}
+
+.button-disable {
+    border: none;
+}
+
+// Media Queries
+@media screen and (max-width: 950px) {
+    section .start-game-screen h1 {
+        font-size: 3rem;
+
+        .hands {
+            width: 70%;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    section {
+        .game-screen {
+            top: 10px;
+
+            .game {
+                .hands {
+                    margin-top: 2.5rem;
+                }
+
+                .game-over {
+                    text-align: center;
+            
+                    button {
+                        width: 14rem;
+                        justify-content: space-around;
+                        margin-top: 2rem;
+                    }
+            
+                }
+
+
+            }
+
+            
+        }
+
+        .start-game-screen {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2  {
+                font-size: 1.25rem;;
+            }
+        }
+
+        .game-screen {
+            margin: 0;
+            .game .options {
+                width: 100%;
+                text-align: center;
+
+                button {
+                    width: 7rem;
+                    justify-content: space-around;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+
+    
+     
 }
