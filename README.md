@@ -6,8 +6,12 @@ JavaScript rock paper scissors game.
 
 
 ## Rules
-
 Simple game of Rock, Paper, Scissors
 - Rock wins against scissors
 - Scissors win against paper
 - Paper wins against rock
+
+## About
+- User v/s Computer
+- Computer hand is generated when user makes selection
+- USer can set winning score limit
