@@ -7,7 +7,7 @@ JavaScript rock paper scissors game.
 
 ## Rules
 Simple game of Rock, Paper, Scissors
-- Rock wins against scissors
+- Rock wins against scissors.
 - Scissors wins against paper
 - Paper wins against rock
 
