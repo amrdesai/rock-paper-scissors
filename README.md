@@ -12,7 +12,7 @@ Simple game of Rock, Paper, Scissors
 - Paper wins against rock.
 
 ## About
-- User v/s Computer
+- User V/s Computer
 - Computer hand is generated when user makes selection.
 - User can set winning score limit
 - User can restart game when the game is over
